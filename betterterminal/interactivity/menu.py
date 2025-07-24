@@ -33,6 +33,7 @@ class BetterMenu():
             for i, linha in enumerate(linhas):
                 if i == 0:
                     print("│ " + linha.center(largura - 4) + " │")
+                    print("├" + "─" * (largura - 2) + "┤")
                 else:
                     print("│ " + linha.ljust(largura - 4) + " │")
 

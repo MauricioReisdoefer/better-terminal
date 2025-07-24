@@ -1,1 +1,1 @@
-# better-terminal
+# Better Terminal #
