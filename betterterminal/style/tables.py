@@ -5,15 +5,21 @@ class BetterTable:
     Args:
         headers (list[str]): Títulos das colunas.
         rows (list[list[str]]): Conteúdo da tabela.
+        clear (Bool): Se True, limpa o terminal.
     """
 
-    def __init__(self, headers: list[str], rows: list[list[str]]):
+    def __init__(self, headers: list[str], rows: list[list[str]], clear=True):
         self.headers = headers
         self.rows = rows
+        self.clear = clear
 
     def show(self):
-        from betterterminal import clear
-        clear()
+        if self.clear:
+            try:
+                from betterterminal import clear
+                clear()
+            except Exception as e:
+                print(e)
         col_widths = [len(h) for h in self.headers]
         for row in self.rows:
             for i, cell in enumerate(row):

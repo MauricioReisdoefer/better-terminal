@@ -1,4 +1,7 @@
-class BetterMenu():       
+import sys
+import readchar
+
+class BetterMenu:       
     """
     Cria um menu com navegação por setas e seleção com Enter.
 
@@ -6,20 +9,26 @@ class BetterMenu():
         title (str): Título exibido no topo do menu.
         options (list[str]): Lista de strings representando cada opção.
         cursor (str): Símbolo que indica a opção selecionada (default: ">").
+        use_clear (bool): Se True, usa clear() a cada atualização.
     """
     
-    def __init__(self, title:str="No Title", options:list[str]=["No Options"], cursor:str=">"):
+    def __init__(self, title: str = "No Title", options: list[str] = ["No Options"], cursor: str = ">", use_clear: bool = True):
         self.title = title
         self.options = options
         self.cursor = cursor
+        self.use_clear = use_clear
     
+    def _writeln(self, text=""):
+        sys.stdout.write(text + "\n")
+        sys.stdout.flush()
+
     def show_menu(self):
-        import readchar
-        from betterterminal import clear
         indice = 0
 
         while True:
-            clear()
+            if self.use_clear:
+                from betterterminal import clear
+                clear()
 
             linhas = [self.title, ""] 
             for i, opcao in enumerate(self.options):
@@ -28,16 +37,16 @@ class BetterMenu():
 
             largura = max(len(linha) for linha in linhas) + 4 
 
-            print("┌" + "─" * (largura - 2) + "┐")
+            self._writeln("┌" + "─" * (largura - 2) + "┐")
 
             for i, linha in enumerate(linhas):
                 if i == 0:
-                    print("│ " + linha.center(largura - 4) + " │")
-                    print("├" + "─" * (largura - 2) + "┤")
+                    self._writeln("│ " + linha.center(largura - 4) + " │")
+                    self._writeln("├" + "─" * (largura - 2) + "┤")
                 else:
-                    print("│ " + linha.ljust(largura - 4) + " │")
+                    self._writeln("│ " + linha.ljust(largura - 4) + " │")
 
-            print("└" + "─" * (largura - 2) + "┘")
+            self._writeln("└" + "─" * (largura - 2) + "┘")
 
             tecla = readchar.readkey()
             if tecla == readchar.key.UP:
