@@ -2,16 +2,6 @@ import sys
 import readchar
 
 class BetterMenu:       
-    """
-    Cria um menu com navegação por setas e seleção com Enter.
-
-    Args:
-        title (str): Título exibido no topo do menu.
-        options (list[str]): Lista de strings representando cada opção.
-        cursor (str): Símbolo que indica a opção selecionada (default: ">").
-        use_clear (bool): Se True, usa clear() a cada atualização.
-    """
-    
     def __init__(self, title: str = "No Title", options: list[str] = ["No Options"], cursor: str = ">", use_clear: bool = True):
         self.title = title
         self.options = options
