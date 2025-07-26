@@ -49,7 +49,7 @@ class BetterPrompt:
             else:
                 default_text = ""
             lines.append("")
-            lines.append(f"Escolha [1-{len(options)}] {default_text}: ")
+            lines.append(f"Opções [1-{len(options)}] {default_text}: ")
 
             frame = BetterFrame(lines[:-1], padding=padding)
             frame.show()
