@@ -9,12 +9,12 @@ _no = {"n", "não", "nao", "no"}
 
 
 class QuestionType(Enum):
-    TEXT = "text"
-    INT = "int"
-    FLOAT = "float"
-    PASSWORD = "password"
-    CHOICE = "choice"
-    YESNO = "yesno"
+    TEXT = "Text"
+    INT = "Int"
+    FLOAT = "Float"
+    PASSWORD = "Password"
+    CHOICE = "Choice"
+    YESNO = "Yes or No"
 
 
 def _read_password(prompt="> ") -> str:
@@ -101,7 +101,8 @@ class BetterQuestion:
                 lines.append(f"{i}. {c}")
         if self.default is not None:
             lines.append("")
-            lines.append(f"(padrão: {self.default})")
+        if self.qtype == QuestionType.YESNO:
+            lines.append("(y/N)")
 
         frame = BetterFrame(lines, padding=self.padding)
         frame.show()
