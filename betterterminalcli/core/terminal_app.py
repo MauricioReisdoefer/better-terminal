@@ -23,10 +23,12 @@ class TerminalApp:
 
     def _update_widgets(self, dt: float):
         for widget in self.widgets:
-            update = getattr(widget, "update", None)
-            if callable(update):
-                update(dt)
-
+            has_changed = widget.update(dt)
+            if has_changed: self.draw_single_widget(widget)
+                
+    def draw_single_widget(self, widget:BaseWidget):
+        widget.render(self.buffer)
+    
     def show_widgets(self):
         for i, widget in enumerate(self.widgets):
             print(f"Widget {i} : {widget.name}")
@@ -35,18 +37,17 @@ class TerminalApp:
         self.running = True
         frame_time = 1 / self.fps if self.fps else 0
         last = time.perf_counter()
-
+        self.buffer.clear()
+        self.draw_widgets()
         try:
             while self.running:
+                self.buffer.os_clearterminal()
                 now = time.perf_counter()
                 dt = now - last
                 last = now
-
-                self.buffer.clear()
-                self.buffer.os_clearterminal()
                 self._update_widgets(dt)
-                self.draw_widgets()
-                self.buffer.render(draw_border=draw_border)
+                
+                self.buffer.render(draw_border=True)
 
                 if frame_time:
                     sleep_left = frame_time - (time.perf_counter() - now)

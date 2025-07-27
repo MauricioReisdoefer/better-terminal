@@ -31,11 +31,11 @@ class BaseWidget():
         self.width = width
         self.height = height
         
-    def update(self, dt:float):
+    def update(self, dt:float) -> bool:
         """
         Faz a atualização do widget.
         
         args:
             dt (float) = DeltaTime (Tempo passado da última atualização)
         """
-        raise NotImplementedError("Subclasses devem ou substituir com PASS ou com um método")
+        raise NotImplementedError("Subclasses devem ou substituir com 'return false' ou com um método")
