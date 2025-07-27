@@ -51,13 +51,23 @@ class ScreenBuffer():
             if 0 <= x+i < self.width and 0 <= y < self.height:
                 self.screen[y][x+i] = char
     
-    def render(self):
+    def render(self, draw_border: bool = True):
         """
         Renderiza a tela no terminal.
+        Se draw_border=True, desenha uma borda bonita na visualização.
         """
         sys.stdout.write("\033[H")
-        sys.stdout.write("\n".join("".join(row) for row in self.screen))
+
+        if draw_border:
+            sys.stdout.write("┌" + "─" * self.width + "┐\n")
+            for row in self.screen:
+                sys.stdout.write("│" + "".join(row) + "│\n")
+            sys.stdout.write("└" + "─" * self.width + "┘")
+        else:
+            sys.stdout.write("\n".join("".join(row) for row in self.screen))
+
         sys.stdout.flush()
+
         
     def draw_matrix(self, x:int, y:int, matrix:list[list[str]]):
         """

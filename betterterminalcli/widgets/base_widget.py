@@ -1,5 +1,5 @@
 from typing import Optional
-from betterterminalcli.core.screen_buffer import ScreenBuffer
+from betterterminalcli import ScreenBuffer
 
 class BaseWidget():
     """
