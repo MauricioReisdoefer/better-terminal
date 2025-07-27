@@ -18,7 +18,7 @@ class ScreenBuffer():
         # Define a Matriz Principal (Screen / Terminal)
         self.screen = [[self.fill for pixel in range(width)] for pixel in range(height)]
     
-
+    @staticmethod
     def os_clearterminal():
         """
         Limpa a tela do terminal conforme o sistema operacional.
