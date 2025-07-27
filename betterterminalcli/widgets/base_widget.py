@@ -7,11 +7,12 @@ class BaseWidget():
     Cada widget deve saber sua posição e implementar renderização.
     """
 
-    def __init__(self, x: int = 0, y: int = 0, width: Optional[int] = None, height: Optional[int] = None):
+    def __init__(self, name:str="No Name", x: int = 0, y: int = 0, width: Optional[int] = None, height: Optional[int] = None):
         self.x = x
         self.y = y
         self.width = width
         self.height = height
+        self.name = name
 
     def render(self, buffer: ScreenBuffer):
         """
@@ -29,3 +30,12 @@ class BaseWidget():
         """Redimensiona o widget."""
         self.width = width
         self.height = height
+        
+    def update(self, dt:float):
+        """
+        Faz a atualização do widget.
+        
+        args:
+            dt (float) = DeltaTime (Tempo passado da última atualização)
+        """
+        raise NotImplementedError("Subclasses devem ou substituir com PASS ou com um método")

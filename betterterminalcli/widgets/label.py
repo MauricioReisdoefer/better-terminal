@@ -7,3 +7,6 @@ class Label(BaseWidget):
 
     def render(self, buffer):
         buffer.draw(self.x, self.y, self.text)
+        
+    def update(self, dt):
+        pass
