@@ -1,1 +1,0 @@
-from .clear_terminal import clear
