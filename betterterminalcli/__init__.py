@@ -1,2 +1,2 @@
 from .core import ScreenBuffer
-from .widgets import BaseWidget, Label
+from .widgets import BaseWidget, TextWidget
