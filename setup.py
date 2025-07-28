@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="betterterminalcli",
-    version="1.1.0",
+    version="0.1.1",
     author="Maurício Reisdoefer Pereira",
     author_email="mauricio.reisdoefer2009@gmail.com",
     description="Uma biblioteca para facilitar interfaces no terminal com menus, formulários, tabelas, logs coloridos e mais.",

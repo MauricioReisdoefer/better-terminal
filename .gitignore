@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 teste.py
+/dist
+/betterterminalcli.egg-info

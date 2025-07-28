@@ -1,18 +1,20 @@
 # Better Terminal #
 
-Biblioteca Python para facilitar a criação de interfaces de terminal interativas, elegantes e funcionais, com menus, formulários, logs, tabelas e entre outros...
+Uma biblioteca Python para criar interfaces dinâmicas e interativas no terminal de forma simples e eficiente. Utiliza threading para facilitar a mudança em tempo real e de forma inteligente o terminal.
 
 ---
 
 ## Recursos principais ##
 
-- Menus interativos com navegação por setas
-- Formulários com múltiplos tipos de perguntas (texto, senha, escolha, sim/não, números)  
-- Exibição de tabelas  
-- Barras de progresso e linhas de status atualizáveis  
-- Logs coloridos para facilitar a leitura  
-- Pager para visualização paginada de textos longos  
-- Molduras (frames) para organizar e destacar informações  
+### Terminal ###
+
+- ScreenBuffer - Controle total de renderização no terminal.
+- TerminalApp - Gerenciador principal da aplicação no terminal.
+
+### Widgets ###
+
+- BaseWidget - Classe base para criar componentes personalizados.
+- TextWidget - Exibição e manipulação de texto. (One-Liner)
 
 ---
 
@@ -24,9 +26,33 @@ pip install betterterminal
 
 Ou instale localmente.
 
+## Exemplo Básico de Uso ##
+
+```python
+from betterterminalcli.core.terminal_app import TerminalApp
+from betterterminalcli.widgets.text_widget import TextWidget
+import time
+
+app = TerminalApp()
+text = TextWidget("Hello, Better Terminal!", x=5, y=5)
+app.add_widget(text)
+app.start()
+
+time.sleep(3)
+text.change_text("I changed my text!")
+time.sleep(3)
+
+app.stop()
+```
+
 ## Planos Futuros ##
 
-Refatorar com um sistema de "Widgets" e adição de novas funcionalidades.
+Em ordem, as futuras atualizações devem conter:
+
+- Adição de widgets mais complexos (barras de progresso, tabelas, menus interativos).
+- Sistema de eventos e callbacks para widgets.
+- Suporte estendido para diferentes terminais e cores.
+- Sistema de suporte para animações
 
 ## Licença ##
 
